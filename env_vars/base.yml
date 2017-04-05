@@ -1,0 +1,12 @@
+git_repo: git@gitlab.com:travelogue/traveldb-api.gitt
+
+project_name: traveldb-api
+application_name: traeveldbapi
+
+git_branch: master
+
+
+# Database settings.
+db_user: "{{ application_name }}"
+db_name: "{{ application_name }}"
+db_password: password
