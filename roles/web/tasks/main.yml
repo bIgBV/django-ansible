@@ -29,3 +29,8 @@
             owner={{ application_user }}
             group={{ application_user }}
             backup=yes
+
+- name: Set up initial migrations for db
+  django_manage:
+    command: migrate
+    app_path: "{{ project_path }}"
