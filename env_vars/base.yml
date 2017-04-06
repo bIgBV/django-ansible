@@ -1,14 +1,21 @@
 git_repo: git@gitlab.com:travelogue/traveldb-api.git
-
-project_name: traveldb-api
-application_name: traeveldbapi
-
-project_path: /var/www/{{ project_name }}
-
 git_branch: master
+
+
+application_name: traeveldbapi
+application_user: "{{ application_name }}"
+application_group: webapps
+
+project_path: "/var/www/{{ project_name }}"
+project_name: traveldb-api
 
 
 # Database settings.
 db_user: "{{ application_name }}"
 db_name: "{{ application_name }}"
 db_password: okaythisshouldprobablybegenerated
+
+virtualenv_python_version: python3
+virtualenv_path: "/var/envs/{{ application_name }}"
+
+requirements_file: "{{ project_path }}/requirements.txt"

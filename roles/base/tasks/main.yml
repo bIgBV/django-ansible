@@ -27,6 +27,8 @@
     - ipython
     - supervisor
     - python3-pip
+    - python3-dev
+
   tags: packages
 
 - name: Upgrade pip

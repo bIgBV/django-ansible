@@ -1,5 +1,9 @@
 ---
 
+- include: create_users_groups.yml
+
+- include: create_virtualenv.yml
+
 - name: Set up root directory
   file: path=/root/ state=directory
 
@@ -19,3 +23,9 @@
 - name: Clone git repo
   git: repo={{ git_repo }} dest={{ project_path }} accept_hostkey=yes
 
+- name: Generate env_settings for application
+  template: src=env_settings.py.j2
+            dest={{ project_path }}/api/env_settings.py
+            owner={{ application_user }}
+            group={{ application_user }}
+            backup=yes

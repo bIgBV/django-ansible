@@ -1,0 +1,11 @@
+---
+
+- name: Install virtualenv
+  pip: name=virtualenv executable=pip3
+
+- name: Create the virtualenv
+  command: virtualenv -p {{ virtualenv_python_version }} {{ virtualenv_path }}
+           creates={{ virtualenv_path }}/bin/activate
+
+- name: Install packages for django_app
+  pip: virtualenv{{ virtualenv_path }} requirements={{ requirements_file }}
