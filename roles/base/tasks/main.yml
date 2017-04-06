@@ -26,6 +26,7 @@
     - python-pycurl
     - ipython
     - supervisor
+    - python3-pip
   tags: packages
 
 - name: Upgrade pip

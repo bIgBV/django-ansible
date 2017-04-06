@@ -1,0 +1,21 @@
+---
+
+- name: Set up root directory
+  file: path=/root/ state=directory
+
+- name: Set up root ssh directory
+  file: path=/root/.ssh/ state=directory
+
+- name: Set up ssh public key
+  copy: src=./deploy_key.pub
+        dest=/root/.ssh/id_rsa.pub
+        mode=0644
+
+- name: Set up ssh private key
+  copy: src=./deploy_key
+        dest=/root/.ssh/id_rsa
+        mode=0600
+
+- name: Clone git repo
+  git: repo={{ git_repo }} dest={{ project_path }} accept_hostkey=yes
+
