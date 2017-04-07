@@ -2,26 +2,9 @@
 
 - include: create_users_groups.yml
 
+- include: setup_git_repo.yml
+
 - include: create_virtualenv.yml
-
-- name: Set up root directory
-  file: path=/root/ state=directory
-
-- name: Set up root ssh directory
-  file: path=/root/.ssh/ state=directory
-
-- name: Set up ssh public key
-  copy: src=./deploy_key.pub
-        dest=/root/.ssh/id_rsa.pub
-        mode=0644
-
-- name: Set up ssh private key
-  copy: src=./deploy_key
-        dest=/root/.ssh/id_rsa
-        mode=0600
-
-- name: Clone git repo
-  git: repo={{ git_repo }} dest={{ project_path }} accept_hostkey=yes
 
 - name: Generate env_settings for application
   template: src=env_settings.py.j2
@@ -29,8 +12,13 @@
             owner={{ application_user }}
             group={{ application_user }}
             backup=yes
+  tags: django
 
 - name: Set up initial migrations for db
   django_manage:
     command: migrate
     app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+  tags: django
