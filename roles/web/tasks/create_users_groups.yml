@@ -6,5 +6,11 @@
 - name: Create the application group
   group: name={{ application_group }} system=yes state=present
 
+- name: Ensure application group has access to /var/www
+  file: path=/var/{{ item }} group={{ application_group }} mode=775 state=directory recurse=yes
+  with_items:
+    - www
+    - envs
+  
 - name: Add the application user to the application group
   user: name={{ application_user }} group={{ application_group }} state=present

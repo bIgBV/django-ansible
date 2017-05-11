@@ -2,7 +2,7 @@ git_repo: git@gitlab.com:travelogue/traveldb-api.git
 git_branch: master
 
 
-application_name: traeveldbapi
+application_name: traveldbapi
 application_user: "{{ application_name }}"
 application_group: webapps
 
@@ -20,7 +20,7 @@ virtualenv_path: "/var/envs/{{ application_name }}"
 
 requirements_file: "{{ project_path }}/requirements.txt"
 
-django_settings_file: "api.settings"
+django_settings_file: "traveldb.settings"
 django_secret_key: "akr2icmg1n8%z^3fe3c+)5d0(t^cy-2_25rrl35a7@!scna^1#"
 
 django_environment:

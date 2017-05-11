@@ -8,7 +8,7 @@
 
 - name: Generate env_settings for application
   template: src=env_settings.py.j2
-            dest={{ project_path }}/api/env_settings.py
+            dest={{ project_path }}/traveldb/env_settings.py
             owner={{ application_user }}
             group={{ application_user }}
             backup=yes

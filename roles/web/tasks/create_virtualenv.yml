@@ -8,9 +8,6 @@
   command: virtualenv -p {{ virtualenv_python_version }} {{ virtualenv_path }}
            creates={{ virtualenv_path }}/bin/activate
 
-- name: Install packages for django_app
-  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
-
 - name: Create virtualenv postactivate script
   template: src=virtualenv_postactivate.j2
             dest={{ virtualenv_path }}/bin/postactivate
@@ -18,3 +15,9 @@
             group={{ application_group }}
             mode=0640
             backup=yes
+
+# - name: Activate virtualenv
+#   shell: source {{ virtualenv_path }}/bin/activate
+
+- name: Install packages for django_app
+  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
