@@ -8,5 +8,5 @@ module = %(project).wsgi:application
 
 master = true
 processes = {{ ansible_processor_cores }}
-socket = /var/run/%(project).sock
+socket = %(base)/%(project).sock
 vaccum = true

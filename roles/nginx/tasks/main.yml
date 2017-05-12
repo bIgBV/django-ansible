@@ -1,0 +1,13 @@
+---
+
+- name: Install nginx
+  apt: name=nginx update_cache={{ update_apt_cache }} force=yes state=installed
+
+- name: Copy nginx config
+  template: src=templates/traveldb.j2 dest="/etc/nginx/sites-available/traveldb"
+
+- name: Link to sites enabled
+  file: 
+    src="/etc/nginx/sites-available/traveldb" 
+    dest="/etc/nginx/sites-enabled/traveldb" 
+    state=link
