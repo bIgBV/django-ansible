@@ -1,7 +1,7 @@
 ---
 
 - name: Install uWSGI via pip
-  pip: name=uwsgi state=present
+  pip: name=uwsgi state=present executable=pip3
   when: uwsgi_version is defined
 
 - name: Ensure config directory is present
@@ -15,9 +15,6 @@
   template: src=templates/uwsgi.conf.j2 dest=/etc/init/uwsgi.conf
   notify:
    - restart uwsgi
-
-- name: Ensure application group has access to /var/run
-  file: path=/var/run group={{ application_group }} mode=775 state=directory recurse=yes
 
 - name: Test service
   service: name=uwsgi state=started
