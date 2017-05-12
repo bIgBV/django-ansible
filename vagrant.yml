@@ -15,4 +15,4 @@
     - db
     - web
     - uwsgi
-    # - nginx
+    - nginx
