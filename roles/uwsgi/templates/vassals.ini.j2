@@ -1,0 +1,12 @@
+[uwsgi]
+project = traveldb
+base = {{ project_path }}
+
+chdir = %(base)
+home = {{ virtualenv_path }}
+module = %(project).wsgi:application
+
+master = true
+processes = {{ ansible_processor_cores }}
+socket = /var/run/%(project).sock
+vaccum = true

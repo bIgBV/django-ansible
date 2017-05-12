@@ -26,3 +26,5 @@ django_secret_key: "akr2icmg1n8%z^3fe3c+)5d0(t^cy-2_25rrl35a7@!scna^1#"
 django_environment:
   DJANGO_SETTINGS_MODULE: "{{ django_settings_file }}"
   DJANGO_SECRET_KEY: "{{ django_secret_key }}"
+
+uwsgi_version: 2.0.15

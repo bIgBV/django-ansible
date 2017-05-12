@@ -1,0 +1,23 @@
+---
+
+- name: Install uWSGI via pip
+  pip: name=uwsgi state=present
+  when: uwsgi_version is defined
+
+- name: Ensure config directory is present
+  become: true
+  file: path=/etc/uwsgi/sites state=directory
+
+- name: Copy app config
+  template: src=templates/vassals.ini.j2 dest=/etc/uwsgi/sites/vassals.ini
+
+- name: Copy uwsgi service definition
+  template: src=templates/uwsgi.conf.j2 dest=/etc/init/uwsgi.conf
+  notify:
+   - restart uwsgi
+
+- name: Ensure application group has access to /var/run
+  file: path=/var/run group={{ application_group }} mode=775 state=directory recurse=yes
+
+- name: Test service
+  service: name=uwsgi state=started
