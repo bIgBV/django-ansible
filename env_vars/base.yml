@@ -28,3 +28,5 @@ django_environment:
   DJANGO_SECRET_KEY: "{{ django_secret_key }}"
 
 uwsgi_version: 2.0.15
+
+server_domain: "localhost"
