@@ -5,7 +5,7 @@ server {
     location = /favicon.ico { access_log off; log_not_found off;}
 
     location / {
-        include       {{ project_path }}/proxy_params;
+        include       {{ project_path }}/uwsgi_params;
         uwsgi_pass    unix:{{ project_path }}/traveldb.sock;
     }
 }

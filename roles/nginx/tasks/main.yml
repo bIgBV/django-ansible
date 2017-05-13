@@ -6,8 +6,21 @@
 - name: Copy nginx config
   template: src=templates/traveldb.j2 dest="/etc/nginx/sites-available/traveldb"
 
+- name: Remove default config
+  file: path="/etc/nginx/sites-enabled/default" state=absent
+
 - name: Link to sites enabled
   file: 
     src="/etc/nginx/sites-available/traveldb" 
     dest="/etc/nginx/sites-enabled/traveldb" 
     state=link
+  notify:
+    - start uwsgi
+
+- name: Add www-data to the application group
+  user:
+    name: www-data
+    group: "{{ application_group }}"
+    append: yes
+  notify:
+    - restart nginx
