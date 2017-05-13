@@ -10,3 +10,5 @@ master = true
 processes = {{ ansible_processor_cores }}
 socket = %(base)/%(project).sock
 vaccum = true
+chmod-socket = 664
+chown-socket = {{ application_user }}

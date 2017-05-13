@@ -4,6 +4,6 @@ start on runlevel [2345]
 stop on runlevel [!2345]
 
 setuid {{ application_user }}
-setgid {{ application_group }}
+setgid www-data
 
 exec /usr/local/bin/uwsgi --emperor /etc/uwsgi/sites

@@ -13,8 +13,3 @@
 
 - name: Copy uwsgi service definition
   template: src=templates/uwsgi.conf.j2 dest=/etc/init/uwsgi.conf
-  notify:
-   - restart uwsgi
-
-- name: Test service
-  service: name=uwsgi state=started
