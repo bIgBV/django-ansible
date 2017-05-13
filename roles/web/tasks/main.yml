@@ -6,6 +6,13 @@
 
 - include: create_virtualenv.yml
 
+- name: Ensure application group owns application directory
+  file: 
+    dest={{ project_path }} 
+    owner={{ application_user }}
+    group={{ application_group }}
+    recurse=true
+
 - name: Generate env_settings for application
   template: src=env_settings.py.j2
             dest={{ project_path }}/traveldb/env_settings.py
