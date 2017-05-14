@@ -18,3 +18,9 @@
 
 - name: Clone git repo
   git: repo={{ git_repo }} dest={{ project_path }} accept_hostkey=yes force=yes
+  register: git_clone
+
+- name: Restart application
+  service: name=uwsgi state=restarted
+  when: git_clone.changed
+

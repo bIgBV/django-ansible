@@ -1,0 +1,19 @@
+---
+
+- name: Create a {{ application_name }} machine in aws
+  hosts: webservers
+  become: yes
+  become_user: root
+  remote_user: ubuntu
+  vars:
+    - update_apt_cache: yes
+    - server_domain: "ec2-54-196-67-153.compute-1.amazonaws.comt"
+  vars_files:
+    - env_vars/base.yml
+
+  roles:
+    - base
+    - db
+    - web
+    - uwsgi
+    - nginx

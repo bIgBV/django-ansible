@@ -29,3 +29,4 @@
     settings: "{{ django_settings_file }}"
   environment: "{{ django_environment }}"
   tags: django
+  when: git_clone.changed

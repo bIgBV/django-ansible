@@ -1,34 +1,34 @@
-git_repo: git@gitlab.com:travelogue/traveldb-api.git
-git_branch: master
-
-
-application_name: traveldbapi
-application_user: "{{ application_name }}"
-application_group: webapps
-
-project_path: "/var/www/{{ project_name }}"
-project_name: traveldb-api
-
-
-# Database settings.
-db_user: "{{ application_name }}"
-db_name: "{{ application_name }}"
-db_password: okaythisshouldprobablybegenerated
-
-virtualenv_python_version: python3
-virtualenv_path: "/var/envs/{{ application_name }}"
-
-requirements_file: "{{ project_path }}/requirements.txt"
-
-django_settings_file: "traveldb.settings"
-django_secret_key: "akr2icmg1n8%z^3fe3c+)5d0(t^cy-2_25rrl35a7@!scna^1#"
-
-django_environment:
-  DJANGO_SETTINGS_MODULE: "{{ django_settings_file }}"
-  DJANGO_SECRET_KEY: "{{ django_secret_key }}"
-
-uwsgi_version: 2.0.15
-
-server_domain: "localhost"
-
-is_debug: 
+# git_repo: <repo link>
+# git_branch: <branch>
+# 
+# 
+# application_name: <app/user_name>
+# application_user: "{{ application_name }}"
+# application_group: <app group>
+# 
+# project_path: "location/to/app/dir"
+# project_name: <app name>
+# 
+# 
+# # Database settings.
+# db_user: "{{ application_name }}"
+# db_name: "{{ application_name }}"
+# db_password: <random generated password>
+# 
+# virtualenv_python_version: <python version>
+# virtualenv_path: "path/to/virtualenv"
+# 
+# requirements_file: "{{ project_path }}/requirements.txt"
+# 
+# django_settings_file: "django_settings_file"
+# django_secret_key: "akr2icmg1n8%z^3fe3c+)5d0(t^cy-2_25rrl35a7@!scna^1#"
+# 
+# django_environment:
+#   DJANGO_SETTINGS_MODULE: "{{ django_settings_file }}"
+#   DJANGO_SECRET_KEY: "{{ django_secret_key }}"
+# 
+# uwsgi_version: 2.0.15
+# 
+# server_domain: "localhost"
+# 
+# is_debug: "True"
